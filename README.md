@@ -1,6 +1,6 @@
 
 <!-- Clone the project -->
-Follow this commands:
+# Follow this commands:
 git clone 'URL'
 
 
