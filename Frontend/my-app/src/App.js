@@ -31,17 +31,17 @@ function App() {
     console.log(ipAddress)
     try {
       const response = await axios.post(`http://127.0.0.1:8000/encrypt_ip/${ipAddress}`)
-      console.log(response)
+      console.log(response.data)
       if (response.data.message === "IP encrypted and stored successfully") {
 
-        const DESPoint = response.data.DESPoint.data.data[0].DESPoint;
+        const DESPoint = response.data.DESPoint;
         Swal.fire("IP Address is encrypted", "Your IP Address is encrypted successfully", "success");
 
-        console.log(response.data.DESPoint.data.data[0].DESPoint)
+        console.log(response.data.DESPoint)
         setEncryptedIpAddress(DESPoint)
       } else if (response.data.message === "IP address already exists in the database") {
         setMessage(" This IP ADDRESS already registered & Encrypted ")
-        Swal.fire("IP Address is registered", "This IP ADDRESS already registered & Encrypted , Try another IP Address", "Info");
+        // Swal.fire("IP Address is registered", "This IP ADDRESS already registered & Encrypted , Try another IP Address", "Info");
       }
     } catch (e) {
       console.log(e)
